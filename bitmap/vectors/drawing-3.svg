@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="400"
+   height="400"
+   viewBox="0 0 105.83333 105.83334"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04, custom)"
+   sodipodi:docname="drawing-3.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     units="px"
+     width="200px"
+     inkscape:zoom="1.575"
+     inkscape:cx="200"
+     inkscape:cy="200"
+     inkscape:window-width="1419"
+     inkscape:window-height="835"
+     inkscape:window-x="45"
+     inkscape:window-y="45"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Blur"
+       id="filter13592"
+       x="-0.0087003209"
+       y="-0.0087003209"
+       width="1.0174006"
+       height="1.0174006">
+      <feGaussianBlur
+         stdDeviation="0.2 0.2"
+         result="blur"
+         id="feGaussianBlur13590" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Blur"
+       id="filter13596"
+       x="-0.0084108335"
+       y="-0.0084108335"
+       width="1.0168217"
+       height="1.0168217">
+      <feGaussianBlur
+         stdDeviation="0.2 0.2"
+         result="blur"
+         id="feGaussianBlur13594" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Blur"
+       id="filter13600"
+       x="-0.0084108335"
+       y="-0.0084108335"
+       width="1.0168217"
+       height="1.0168217">
+      <feGaussianBlur
+         stdDeviation="0.2 0.2"
+         result="blur"
+         id="feGaussianBlur13598" />
+    </filter>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#000000;stroke:none;stroke-width:0.341069"
+       id="rect31"
+       width="105.83334"
+       height="105.83334"
+       x="0"
+       y="0" />
+    <text
+       xml:space="preserve"
+       style="font-weight:500;font-size:5.88126px;line-height:1.25;font-family:Jost;-inkscape-font-specification:'Jost Medium';text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.0787666"
+       x="52.8755"
+       y="92.506439"
+       id="text20351"><tspan
+         sodipodi:role="line"
+         id="tspan20349"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#ffffff;stroke-width:0.0787666"
+         x="52.8755"
+         y="92.506439">Example of red, green and</tspan><tspan
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#ffffff;stroke-width:0.0787666"
+         x="52.8755"
+         y="100.11909"
+         id="tspan23575">making all other colours</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2"
+     style="mix-blend-mode:lighten">
+    <circle
+       style="fill:#00ff00;stroke:none;stroke-width:0.691624;filter:url(#filter13600)"
+       id="path13156"
+       cx="55.618599"
+       cy="31.047977"
+       r="28.534628" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Layer 3"
+     style="mix-blend-mode:lighten">
+    <circle
+       style="fill:#ff0000;stroke:none;stroke-width:0.691624;filter:url(#filter13592)"
+       id="path13158"
+       cx="70.335571"
+       cy="54.521534"
+       r="27.58519" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Layer 4"
+     style="mix-blend-mode:lighten">
+    <circle
+       style="fill:#0000ff;stroke:none;stroke-width:0.691624;filter:url(#filter13596)"
+       id="circle13280"
+       cx="42.733013"
+       cy="56.659912"
+       r="28.534628" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="Layer 5">
+    <text
+       xml:space="preserve"
+       style="font-weight:500;font-size:10.6838px;line-height:1.25;font-family:Jost;-inkscape-font-specification:'Jost Medium';text-align:center;text-anchor:middle;stroke-width:0.143086"
+       x="55.639832"
+       y="19.782352"
+       id="text42587"><tspan
+         sodipodi:role="line"
+         id="tspan42585"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.143086"
+         x="55.639832"
+         y="19.782352">G</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-weight:500;font-size:10.6838px;line-height:1.25;font-family:Jost;-inkscape-font-specification:'Jost Medium';text-align:center;text-anchor:middle;stroke-width:0.143086"
+       x="32.179714"
+       y="67.829292"
+       id="text47165"><tspan
+         sodipodi:role="line"
+         id="tspan47163"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.143086"
+         x="32.179714"
+         y="67.829292">B</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-weight:500;font-size:6.11948px;line-height:1.25;font-family:Jost;-inkscape-font-specification:'Jost Medium';text-align:center;text-anchor:middle;stroke-width:0.081957"
+       x="37.881573"
+       y="40.026237"
+       id="text47165-7"><tspan
+         sodipodi:role="line"
+         id="tspan47163-5"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.081957"
+         x="37.881573"
+         y="40.026237">G+B</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-weight:500;font-size:6.11948px;line-height:1.25;font-family:Jost;-inkscape-font-specification:'Jost Medium';text-align:center;text-anchor:middle;stroke-width:0.081957"
+       x="56.729477"
+       y="51.307251"
+       id="text47165-7-3"><tspan
+         sodipodi:role="line"
+         id="tspan47163-5-5"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.081957"
+         x="56.729477"
+         y="51.307251">R+G+B</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-weight:500;font-size:6.11948px;line-height:1.25;font-family:Jost;-inkscape-font-specification:'Jost Medium';text-align:center;text-anchor:middle;stroke-width:0.081957"
+       x="73.997215"
+       y="37.95787"
+       id="text47165-7-6"><tspan
+         sodipodi:role="line"
+         id="tspan47163-5-2"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.081957"
+         x="73.997215"
+         y="37.95787">R+G</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-weight:500;font-size:6.11948px;line-height:1.25;font-family:Jost;-inkscape-font-specification:'Jost Medium';text-align:center;text-anchor:middle;stroke-width:0.081957"
+       x="58.213558"
+       y="69.582008"
+       id="text47165-7-9"><tspan
+         sodipodi:role="line"
+         id="tspan47163-5-1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.081957"
+         x="58.213558"
+         y="69.582008">R+B</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-weight:500;font-size:10.6838px;line-height:1.25;font-family:Jost;-inkscape-font-specification:'Jost Medium';text-align:center;text-anchor:middle;stroke-width:0.143086"
+       x="83.765007"
+       y="63.719143"
+       id="text47165-3"><tspan
+         sodipodi:role="line"
+         id="tspan47163-6"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.143086"
+         x="83.765007"
+         y="63.719143">R</tspan></text>
+  </g>
+</svg>
