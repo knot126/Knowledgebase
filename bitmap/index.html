@@ -16,6 +16,9 @@
 			<div class="topbar"><a href="../index.html">Knowlegebase</a></div>
 			<div id="main-content" class="content">
 				<h1>Bitmaps</h1>
+				<div class="warning">
+					<p>The content on this page is incomplete and has not been proofread for accuracy. Please report any issues you notice on the <a href="https://github.com/knot126/Knowledgebase/issues">GitHub issues page</a>.</p>
+				</div>
 				<p>Bitmaps — or more generally raster graphics — store an image as a grid of colours. This can then be sent directly to the screen, which is a grid of lights, called pixels, that change colour based on the values in the bitmap.</p>
 				<p>In other words, we are mapping the bits in the image to the pixels on the screen.</p>
 				<p>Let us start simple. Take this grid of numbers, where \(1\) means the cell is lit (white) and \(0\) means the cell is off (black): $$\begin{bmatrix} 0 & 1 & 0 & 0 \\ 0 & 1 & 1 & 1 \\ 0 & 1 & 0 & 1 \\ 0 & 1 & 1 & 1 \end{bmatrix}$$</p>
@@ -41,10 +44,14 @@
 				<p class="image">
 					<img src="vectors/drawing-4.svg" width="200" height="200"/>
 				</p>
+				<div class="note">
+					<p><b>Note</b>: The following section about alpha channels needs more info about alpha blending.</p>
+				</div>
 				<p>There is one last thing we might want to add: some way to store the transluscentcy (see-through-ness) of a pixel so that we can see other things thorugh our image if we put it on top of another.</p>
 				<p>Usually, we add another channel (number) for each pixel that denotes its transluscentcy.</p>
 				<p>And conventionally, that channel is called "alpha" (for the greek letter \(\alpha\)) where \(255\) is usually opaque and \(0\) is transparent.</p>
-				<p>When we begin to combine pixels with alpha channels, we will interpolate (fade) between the two pixel values using the alpha channel. The most common is linear interpolation.</p>
+				<p>When we begin to combine pixels with alpha channels, we will fade (or interpolate) between the two pixel values using the alpha channel.</p>
+				<p>There are many ways to do alpha blending, some being more realistic than others. (EDITOR NOTE write more about this...)</p>
 				<p>Let's see an examaple where we have \((r, g, b, \alpha)\)! $$ \begin{bmatrix} (0, 127, 255, 255) & (0, 127, 255, 170) & (0, 127, 255, 85) & (0, 127, 255, 0) \\ (255, 128, 0, 255) & (255, 128, 0, 170) & (255, 128, 0, 85) & (255, 128, 0, 0) \\ (63, 127, 127, 255) & (63, 127, 127, 170) & (63, 127, 127, 85) & (63, 127, 127, 0) \\ (255, 0, 0, 255) & (0, 255, 0, 255) & (0, 0, 255, 255) & (255, 255, 255, 0) \end{bmatrix} $$</p>
 				<p>The final image:</p>
 				<p class="image">
@@ -80,9 +87,13 @@
 					<img src="vectors/drawing-6.svg" width="200" height="200"/>
 				</p>
 				<p>To access a pixel in any row, we can just say that it is located at \(\text{OffsetToRow} + x\), where \(x\) is the x-coordinate.</p>
-				<!-- image!!! -->
+				<p class="image">
+					<img src="vectors/drawing-7.svg" width="200" height="200"/>
+				</p>
 				<p>To get the start of the \((y + 1)\)th row, and therefore \(\text{OffsetToRow}\), we can find \(y \cdot \text{Width}\), the start of row \(y\).</p>
-				<!-- image!!! -->
+				<p class="image">
+					<img src="vectors/drawing-8.svg" width="200" height="200"/>
+				</p>
 				<p>Finally, we can plug this back together to find that the offset for any pixel is \(y \cdot \text{Width} + x\). We can then just implement this directly:</p>
 				<pre><b>let</b> <span class="pink">bitmap_pixel_index</span>(x, y, width) = y * width + x;</pre>
 				<p>Now we can start to implement <code>bitmap_init</code>, which is mostly language-specific:</p>
@@ -110,6 +121,7 @@
 				<p>It might seem like we would implement getting a pixel similarly, but we do need to remember there is an alpha channel:</p>
 				<!-- FINISH THIS!!! -->
 			</div>
+			<div class="topbar"><p>The contents of this website are licensed under the <a rel="license" href="http://creativecommons.org/publicdomain/zero/1.0/">Cerative Commons Zero</a> (public domain) licence unless otherwise noted.</p></div>
 		</div>
 	</body>
 </html>

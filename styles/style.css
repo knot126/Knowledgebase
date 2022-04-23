@@ -10,7 +10,9 @@
 	--main-colour: #26a269;
 	--text-colour: #1f1f1f;
 	--main-font: "Kumbh Sans";
+/* 	--monospace-font: "Inconsolata"; */
 	--monospace-font: "Nanum Gothic Coding";
+/* 	--para-font: "Inter"; */
 	--para-font: "Open Sans";
 	--theme-red: #c01c28;
 	--theme-green: #26a269;
@@ -30,10 +32,10 @@
 .pink { color: var(--theme-pink); }
 
 ::selection {
-	color: #241f31;
-	background: #8ff0a4;
+	background: #33d17a80;
 }
 
+/* Text markup */
 h1, h2, h3, h4, h5, h6, p, li {
 	color: var(--text-colour);
 	font-family: var(--main-font), sans-serif;
@@ -66,12 +68,6 @@ a {
 	text-decoration-line: none;
 }
 
-object {
-	font-family: var(--monospace-font), monospace;
-	width: 100%;
-	height: 50%;
-}
-
 pre {
 	background: #f7f7f7;
 	border: 1px solid #e0e0e0;
@@ -85,6 +81,7 @@ pre {
 code {
 	background: #f7f7f7;
 	border: 1px solid #e0e0e0;
+	border-bottom-width: 2px;
 	border-radius: 0.2em;
 	overflow: auto;
 	padding: 0.2em;
@@ -114,24 +111,39 @@ code {
 	font-weight: 700;
 }
 
-.topbar a {
+.topbar a, .topbar p {
 	color: #fff;
 }
 
 .content {
-	max-width: 50%;
+	max-width: max(35em, 50%);
 	margin: 1.75em auto;
-/* 	border: 1px solid #e7e7e7; */
 	padding: 0.35em;
+	font-family: var(--para-font), monospace;
+	font-size: 12pt;
 }
 
 .box {
-	background: #fff;
-	border: 1px solid #e0e0e0;
+	background: #f2f2f2;
+/* 	border: 1px solid #e0e0e0; */
 	border-radius: 0.2em;
 	overflow: auto;
-	padding: 1.25em;
+	padding: 1.1em;
 	margin: 1em;
 	font-family: var(--main-font), monospace;
 	line-height: 1.3;
+}
+
+.warning {
+	background: #ffbe6f;
+	border-radius: 0.3em;
+	padding: 0.8em;
+	margin-bottom: 0.75em;
+}
+
+.note {
+	background: #deddda;
+	border-radius: 0.3em;
+	padding: 0.8em;
+	margin-bottom: 0.75em;
 }
