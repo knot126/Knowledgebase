@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="../styles/style.css"/>
+		<link rel="icon" type="image/png" href="../favicon.png"/>
+		<title>List of rasterisable and raytraceable primitives</title>
+		<meta charset="utf-8"/>
+		<meta name="keywords" content="bitmap, computer graphics, raster"/>
+		<!-- KaTeX include -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+		<!-- KaTeX include -->
+	</head>
+	<body>
+		<div id="main" class="main">
+			<div class="topbar"><a href="../index.html">Knot126's Knowlegebase</a></div>
+			<div id="main-content" class="content">
+				<h1>List of rasterisable and raytraceable primitives</h1>
+				<p>This is an incomplete list of possible primitives in computer graphics, as well as algorithms that go with them and links to descriptions of the algorithms if available.</p>
+				<h2>Primitives for rasterisation</h2>
+				<h3>Common for Rasterisaton</h3>
+				<p>These primitives are common &mdash; especailly in 3D graphics &mdash; because they are easy to work with.</p>
+				<ul>
+					<li>Points</li>
+					<li>Lines</li>
+					<ul>
+						<li>Naïve (solve \(y = rx + c\)) [<a href="https://en.wikipedia.org/wiki/Line_drawing_algorithm#A_naive_line-drawing_algorithm">Wikipedia</a>]</li>
+						<li>DDA [<a href="https://en.wikipedia.org/wiki/Digital_differential_analyzer_(graphics_algorithm)">Wikipedia</a>]</li>
+						<li>Midpoint line generation algorithm [<a href="https://www.geeksforgeeks.org/mid-point-line-generation-algorithm/">GeeksforGeeks</a>]</li>
+						<li>Bresenham's line algorithm [<a href="https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm">Wikipedia</a>]</li>
+						<li>Xiaolin Wu's line algorithm (with AA) [<a href="https://en.wikipedia.org/wiki/Xiaolin_Wu%27s_line_algorithm">Wikipedia</a>]</li>
+						<li>Gupta-Sproull algorithm (with AA)</li>
+						<li>Signed distance function</li>
+					</ul>
+					<li>Triangles</li>
+					<ul>
+						<li>Edge function [<a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/rasterization-practical-implementation/rasterization-stage">Scratchapixel</a>]</li>
+						<li>Barycentric coordinates [<a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/rasterization-practical-implementation/rasterization-stage">Scratchapixel</a>]</li>
+						<li>Scanline rasterisation [<a href="https://en.wikipedia.org/wiki/Scanline_rendering">Wikipedia</a>]</li>
+						<li>Signed distance function</li>
+					</ul>
+					<li>Quadrilaterals</li>
+					<ul>
+						<li>Edge function extended</li>
+					</ul>
+				</ul>
+				<h3>Rasterisable</h3>
+				<p>Other primitives for which at least one algorithm exists for rasterising explicitly - that is, it doesn't require tesselation and then using some other algorithm. Not every one of these will be easy to use in 3D.</p>
+				<ul>
+					<li>Rectangles</li>
+					<ul>
+						<li>Naïve</li>
+					</ul>
+					<li>Elipses and circles</li>
+					<ul>
+						<li>Midpoint circle algorithm [<a href="https://www.geeksforgeeks.org/mid-point-circle-drawing-algorithm/">GeeksforGeeks</a>]</li>
+						<li>Signed distance function</li>
+					</ul>
+					<li>Bezier curves</li>
+					<ul>
+						<li>Naïve (find the y-values for given x-value)</li>
+						<li>Bresenham extended [<a href="http://members.chello.at/easyfilter/bresenham.html">Alois Zingl</a>]</li>
+						<li>Signed distance function</li>
+					</ul>
+					<li>Beziergon and SVG paths</li>
+					<ul>
+						<li>Loop-Blinn 2005 [<a href="https://developer.nvidia.com/gpugems/gpugems3/part-iv-image-effects/chapter-25-rendering-vector-art-gpu">GPU Gems</a> | <a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2005/01/p1000-loop.pdf">paper</a>]</li>
+						<li>Wavelet rasterisation [<a href="https://people.engr.tamu.edu/schaefer/research/wavelet_rasterization.pdf">paper</a>]</li>
+					</ul>
+					<li>Convex polygons</li>
+					<ul>
+						<li>Edge function extended</li>
+					</ul>
+					<li>Splines</li>
+				</ul>
+				<h3>Tesslatable</h3>
+				<p>These are primitives for which I am not aware of any explicit algorithm for when rasterising.</p>
+				<ul>
+					<li>Concave polygons</li>
+				</ul>
+				<h2>Primitives for ray tracing</h2>
+				<h3>Analytical</h3>
+				<p>Shapes for which ray intersection locations can be found analytically.</p>
+				<ul>
+					<li>Points</li>
+					<li>Lines</li>
+					<li>Triangles</li>
+					<li>Planes</li>
+					<li>Quadratic surfaces</li>
+					<ul>
+						<li>Spheres</li>
+					</ul>
+					<li>Cubic surfaces</li>
+					<li>Quartic surfaces</li>
+				</ul>
+				<p>Not technically related, but worth mentioning:</p>
+				<ul>
+					<li>Constructive solid geometry</li>
+				</ul>
+				<h3>Intersectable</h3>
+				<p>Shapes for which ray intersections can be found, but might require numerical methods. This is often since their roots <a href="https://en.wikipedia.org/wiki/Abel%E2%80%93Ruffini_theorem">cannot be found analytically using reasonable methods</a>.</p>
+				<ul>
+					<li>Bezier surfaces</li>
+					<li>B-spline and NURBS surfaces</li>
+					<li><i>n</i>-degree single-variable polynomial surfaces</li>
+				</ul>
+			</div>
+			<div class="topbar"><p>The contents of this website are licensed under the <a rel="license" href="http://creativecommons.org/publicdomain/zero/1.0/">Cerative Commons Zero</a> (public domain) licence unless otherwise noted.</p></div>
+		</div>
+	</body>
+</html>
