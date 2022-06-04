@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="../styles/style.css"/>
+		<link rel="icon" type="image/png" href="../favicon.png"/>
+		<title>Drawing bézier curves using a naïve algorithm</title>
+		<meta charset="utf-8"/>
+		<meta name="keywords" content="bitmap, computer graphics, raster"/>
+		<!-- KaTeX include -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+		<!-- KaTeX include -->
+	</head>
+	<body>
+		<div id="main" class="main">
+			<div class="topbar"><a href="../index.html">Knot126's Knowlegebase</a></div>
+			<div id="main-content" class="content">
+				<h1>Drawing bézier curves using a naïve algorithm</h1>
+<!--				<div class="warning">
+					<p>The content on this page is incomplete and has not been proofread for accuracy. Please report any issues you notice on the <a href="https://github.com/knot126/Knowledgebase/issues">GitHub issues page</a>.</p>
+				</div> —  -->
+				<p>Generally, when you want to draw a curve like a bezier curve, you tesslate it and then use some other line drawing algorithm to draw the segments. But what if you want a pixel perfect algorithm to draw bezier curves instead of just approximating them with line segments?</p>
+				<p>This can be done! The accepted common way seems to be to use <a href="http://members.chello.at/easyfilter/bresenham.html">a modification of Bresenham's line algorithm</a> to draw the curve, but there is a simpler way that is similar to the naïve line algorithm.</p>
+				<p>For now, we will just do a quadratic (2nd degree) bezier since it is simpler to walk through the derivation.</p>
+				<h2>Finding \(t\), given \(x\)</h2>
+				<p>To start, let's find the \(t\)-values given an \(x\)-value. Let's write the \(x\)-coordinate of our curve:</p>
+				
+				<p>$$ x = \color{red}(1 - t)^2 x_0\color{reset} + \color{green}2(1 - t)tx_1\color{reset} + \color{blue}t^2x_2\color{reset} $$</p>
+				
+				<p>Next, let's expand this to be a 2nd degree polynomial (an expression in the form \(p(t) = at^2 + bt + c\)).</p>
+				
+				<p>$$ x = \color{red}(1 - t)^2 x_0\color{reset} + \color{green}2(1 - t)tx_1\color{reset} + \color{blue}t^2x_2\color{reset} $$</p>
+				<p>$$ x = \color{red}(1 - 2t + t^2) x_0\color{reset} + \color{green}2(1 - t)tx_1\color{reset} + \color{blue}t^2x_2\color{reset} $$</p>
+				<p>$$ x = \color{red}(1 - 2t + t^2) x_0\color{reset} + \color{green}(2t - 2t^2)x_1\color{reset} + \color{blue}t^2x_2\color{reset} $$</p>
+				<p>$$ x = \color{red}x_0 - 2x_0t + x_0t^2\color{reset} + \color{green}(2t - 2t^2)x_1\color{reset} + \color{blue}t^2x_2\color{reset} $$</p>
+				<p>$$ x = \color{red}x_0\color{reset} - \color{red}2x_0\color{reset}t + \color{red}x_0\color{reset}t^2 + \color{green}2x_1\color{reset}t - \color{green}2x_1\color{reset}t^2 + \color{blue}x_2\color{reset}t^2 $$</p>
+				<p>$$ x = \color{red}x_0\color{reset}t^2 - \color{green}2x_1\color{reset}t^2 + \color{blue}x_2\color{reset}t^2 + \color{green}2x_1\color{reset}t - \color{red}2x_0\color{reset}t + \color{red}x_0\color{reset} $$</p>
+				<p>$$ x = (\color{red}x_0\color{reset} - \color{green}2x_1\color{reset} + \color{blue}x_2\color{reset})t^2 + (\color{green}2x_1\color{reset} - \color{red}2x_0\color{reset})t + \color{red}x_0\color{reset} $$</p>
+				
+				<p>Notice that if we subtract \(x\) from both sides, finding the value of \(t\) just turns into a problem of finding the roots of a quadratic:</p>
+				
+				<p>$$ x = (\color{red}x_0\color{reset} - \color{green}2x_1\color{reset} + \color{blue}x_2\color{reset})t^2 + (\color{green}2x_1\color{reset} - \color{red}2x_0\color{reset})t + \color{red}x_0\color{reset} $$</p>
+				<p>$$ 0 = (\color{red}x_0\color{reset} - \color{green}2x_1\color{reset} + \color{blue}x_2\color{reset})t^2 + (\color{green}2x_1\color{reset} - \color{red}2x_0\color{reset})t + \color{red}x_0\color{reset} - \color{purple}x\color{reset} $$</p>
+				
+				<p>So to find any possible values of \(t\), we can solve for the roots &mdash; or the values of \(t\) that make the entire thing equal to zero. It would make sense to use quadtratic formula (which, if you don't completely understand it, is a generalised variant of <a href="https://www.khanacademy.org/math/algebra-home/alg-quadratics/alg-solving-quadratics-by-completing-the-square/v/solving-quadratic-equations-by-completing-the-square">completing the square</a>) since it is fast, in which case</p>
+				
+				<p>$$ a = \color{red}x_0\color{reset} - \color{green}2x_1\color{reset} + \color{blue}x_2\color{reset} $$</p>
+				<p>$$ b = \color{green}2x_1\color{reset} - \color{red}2x_0\color{reset} $$</p>
+				<p>$$ c = \color{red}x_0\color{reset} - \color{purple}x\color{reset} $$</p>
+				
+				<p>that can then be passed to a function that will return the roots.</p>
+				
+				<p>$$ \text{FindRoots}(a, b, c) = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$</p>
+				
+				<p>(Or if you must be mathematically percise, a <a href="https://en.wikipedia.org/wiki/Multivalued_function">multivalued function</a>.)</p>
+				
+				<h2>Filtering \(t\)-values</h2>
+				<p>Just because we can find some \(t\)-values that will work does not mean we should use them. What if \(t = 1.43\) ? That is out of the normal range of a bezier curve, but is technically perfectly valid so it would create some unexpected results.</p>
+				<p>We need to place a constraint on the values that we will accept. Thankfully, if you know the basics of bezier curves you know that we just need to accept values in the range \(t \in [0, 1]\) and discard anything else.</p>
+				<p>So, after we get the possible \(t\)-values for the current \(x\)-coordinate, we should check if they are in the range [0, 1]</p>
+				
+				<h2>Finding \(y\)</h2>
+				
+				<p>Once we know that the \(t\)-value(s) at this \(x\)-coordinate is/are valid, we need find the \(y\)-coordinate for that \(t\)-value. Hopefully, you know that you can just solve a bezier like normal in order to do that:</p>
+				
+				<p>$$ y(t) = (1 - t)^2y_0 + 2(1 - t)ty_1 + t^2y_2 $$</p>
+				
+				<h2>A small problem</h2>
+				
+				<div class="note">
+					<p>Still looking for a good solution to the issue, so I don't have one here yet.</p>
+				</div>
+				
+				<p>Much like the naïve line algorithm, we run into a problem when the line's derivative (rate of change) is greater than one (\(\frac{\Delta y}{\Delta x} > 1\) or \(L'(x) > 1\)). The solution was simple: swap the \(x\) and \(y\) values so that this change falls below \(1\) again.</p>
+				<p>Unforunately, it's not as simple as swapping the \(x\) and \(y\) coordinate for that special case since Bezier curves have variable derivatives and \(y'(x)\) might fall above or below.</p>
+<!-- 				<p>Keep in mind that Bezier curves typically are not expressed as a function of \(x\) but as a function of a parameter \(t\) so normally the derivative is a vector \(\vec{v}\) with respect to \(t\) like \(\frac{d\vec{v}(t)}{dt}\).</p> -->
+				
+				<h2>Building the algorithm</h2>
+				
+				<p>You can find a full implementation in <a href="https://github.com/knot126/Melon/blob/trunk/src/bitmap.c#L380"><code>bitmap.c</code></a>.</p>
+				<p>Here is a rough outline for what to do:</p>
+				
+				<div class="ps-block">
+					<p>For each row \(x\), we need to</p>
+					<div class="ps-block">
+						<p>Find the \(t\)-values that work for this \(x\)-coordinate</p>
+						<p>Check each of those t-values to see if t is in range \(t \in [0, 1]\)</p>
+						<p>For each \(t\)-value</p>
+						<div class="ps-block">
+							<p>If this value is in range</p>
+							<div class="ps-block">
+								<p>Evaluate \(y\) at this \(t\)-value</p>
+								<p>Draw a point at this \((x, y)\)</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="topbar"><p>The contents of this website are licensed under the <a rel="license" href="http://creativecommons.org/publicdomain/zero/1.0/">Cerative Commons Zero</a> (public domain) licence unless otherwise noted.</p></div>
+		</div>
+	</body>
+</html>
