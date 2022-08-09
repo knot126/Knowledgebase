@@ -15,7 +15,7 @@
 	--main-colour-darker: #025e70;
 	--main-colour-transluscent: #02aacc10;
 	--text-colour: #1f1f1f;
-	--background-colour: #fff;
+	--background-colour: #fffd;
 	--box-background-colour: #00000008;
 	--code-background-colour: #f7f7f7;
 	--code-border-colour: #e0e0e0;
@@ -95,7 +95,7 @@ h1, h2, h3, h4, h5, h6, p, li {
 	padding: 0;
 }
 
-h1 { font-size: 32pt; }
+h1 { font-size: 32pt; font-weight: bold; }
 h2 { font-size: 24pt; }
 h3 { font-size: 18pt; }
 h4 { font-size: 12pt; }
@@ -182,8 +182,11 @@ a code:hover {
 }
 
 .blockquote {
+	border-left: 0.3em solid #8884;
+	opacity: 0.75;
 	overflow: auto;
-	margin: 1.5em 2em;
+	margin: 1em;
+	padding: 0.75em;
 	font-family: var(--para-font);
 	font-style: italic;
 	line-height: 1.3;
@@ -207,6 +210,7 @@ a code:hover {
 }
 
 .content {
+	backdrop-filter: blur(1.0em);
 	background: var(--background-colour);
 	border-radius: 0.3em;
 	box-shadow: 0 0.3em 0.6em #0004;
