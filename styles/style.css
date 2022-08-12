@@ -36,7 +36,7 @@
 	:root {
 		--main-colour-darker: #05ccef;
 		--text-colour: #f8f8f8;
-		--background-colour: #1f1f1f;
+		--background-colour: #1f1f1fd0;
 		--box-background-colour: #ffffff08;
 		--code-background-colour: #111;
 		--code-border-colour: #333;
@@ -153,6 +153,15 @@ a code {
 
 a code:hover {
 	border-color: var(--main-colour-dark);
+}
+
+th, td {
+	padding: 1em;
+	border-radius: 0.325em;
+}
+
+th {
+	background: #8882;
 }
 
 .ps-block {
