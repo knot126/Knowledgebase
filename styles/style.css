@@ -10,12 +10,12 @@
 }
 
 :root {
-	--main-colour: #02aacc;
-	--main-colour-dark: #0388a3;
-	--main-colour-darker: #025e70;
+	--main-colour: #bc5fd3;
+	--main-colour-dark: #37c837;
+	--main-colour-darker: #854395;
 	--main-colour-transluscent: #02aacc10;
 	--text-colour: #1f1f1f;
-	--background-colour: #fffd;
+	--background-colour: #fffa;
 	--box-background-colour: #00000008;
 	--code-background-colour: #f7f7f7;
 	--code-border-colour: #e0e0e0;
@@ -23,9 +23,9 @@
 	--para-font: "Kumbh Sans", sans-serif;
 	--monospace-font: "Nanum Gothic Coding", monospace;
 	--theme-red: #c01c28;
-	--theme-green: #26a269;
+	--theme-green: #37c837;
 	--theme-blue: #1c71d8;
-	--theme-purple: #813d9c;
+	--theme-purple: #bc5fd3;
 	--theme-yellow: #f5c211;
 	--theme-orange: #e66100;
 	--theme-pink: #a7334f;
@@ -34,9 +34,9 @@
 /* Support for dark theme */
 @media (prefers-color-scheme: dark) {
 	:root {
-		--main-colour-darker: #05ccef;
+		--main-colour-darker: #bc5fd3;
 		--text-colour: #f8f8f8;
-		--background-colour: #1f1f1fd0;
+		--background-colour: #1f1f1fa0;
 		--box-background-colour: #ffffff08;
 		--code-background-colour: #111;
 		--code-border-colour: #333;
@@ -70,7 +70,7 @@
 .pink { color: var(--theme-pink); }
 
 ::selection {
-	background: var(--main-colour-dark);
+	background: var(--main-colour);
 	color: #fff;
 }
 
@@ -219,14 +219,14 @@ th {
 }
 
 .content {
-	backdrop-filter: blur(1.0em);
+	backdrop-filter: blur(2.0em);
 	background: var(--background-colour);
 	border-radius: 0.3em;
 	box-shadow: 0 0.3em 0.6em #0004;
 	color: var(--text-colour);
 	max-width: max(35em, 50%);
 	margin: 0.5em auto;
-	padding: 1em;
+	padding: 1.25em;
 	font-family: var(--para-font);
 	font-size: 12pt;
 }
@@ -236,22 +236,22 @@ th {
 	border-radius: 0.2em;
 	overflow: auto;
 	padding: 1.1em;
-	margin: 0.5em;
+	margin: 0.75em;
 	font-family: var(--main-font);
 	line-height: 1.3;
 }
 
 .warning {
-	color: #fff;
-	background: #e2551d;
+/* 	color: #fff; */
+	background: #e2551d1f;
 	border-radius: 0.3em;
 	padding: 0.8em;
 	margin-bottom: 0.75em;
 }
 
 .warning a {
-	color: #fff;
-	text-decoration-line: underline;
+	color: #e2551d;
+/* 	text-decoration-line: underline; */
 }
 
 .note {
