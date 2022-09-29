@@ -1,14 +1,16 @@
 # Fixed point arithmetic
 
-**Fixed point arithmetic** is essentially taking the idea of a rational number and storing the top and bottom part - or just the top, if the bottom part can be made constant, which is usually the case.
+> TODO: I do reference the base ($B$) as being variable a lot, even though fixed point rarely has a variable base. This should be refactored to consider the base being a constant value.
+
+**Fixed point arithmetic** is essentially taking the idea of a rational number and the idea of multiplication undoing division in order to store rational numbers in integer data types.
 
 ## Formally
 
-Formally, we have a rational number $N$:
+Formally, we have a rational number $N$, with $A$ being divided by some base $B$:
 
 $$N = \frac{A}{B}$$
 
-<center>*$A/B$ can't be stored as a fraction!*</center>
+<center>*$A/B$ can't be stored as an integer!*</center>
 
 And we eliminate the division to store the number in an integer:
 
@@ -65,52 +67,25 @@ Fixed add(Fixed x, Fixed y) {
 
 ### Multiplication
 
-Now, what about multiplication? We want to find what we do to get $B(NM)$, which is the numbers multiplied and represented as a fixed point integer.
+So, we start with the numbers stored as fixed point values:
 
-$$N = \frac{A}{B}$$
-$$M = \frac{C}{B}$$
+$$X = BN$$
+$$Y = BM$$
 
-Multiply, of course:
+Then we find their product as normal:
 
-$$P = N \cdot M = \frac{A}{B} \cdot \frac{C}{B} = \frac{AC}{B^2}$$
+$$X \cdot Y = B^2 NM$$
 
-Now we can multiply by $B$ to get $BNM$:
+And now, we want to find the product represented as a fixed point number, which should only involve one $B$. So, we can divide by $B$ to get:
 
-$$BP = BNM = \frac{AC}{B}$$
+$$\frac{X \cdot Y}{B} = BNM$$
 
-So, we can multiply the values, then divide by the base $B$:
+So, our product is the fixed point number $X$ times the fixed point number $Y$ divided by $B$ to account for the squaring of $B$ that happens when we multiply the two.
 
-```c
-Fixed multiply(Fixed x, Fixed y) {
-	return (x * y) / b;
-	// Or if your base is a power of two: (x * y) >> n, where B = 2^n.
-}
-```
+----
 
-### Division
+Do note that you can also rewrite this as:
 
-When handling division, we still start with simple facts:
+$$\frac{X \cdot Y}{B \cdot B} = NM$$
 
-$$N = \frac{A}{B}$$
-$$M = \frac{C}{B}$$
-
-Where we can then define the problem:
-
-$$P = \frac{N}{M} = \frac{\frac{A}{B}}{\frac{C}{B}}$$
-
-And do some nice algebra to eliminate the base:
-
-$$\frac{\frac{A}{B}}{\frac{C}{B}} = \frac{B^{-1}A}{B^{-1}C} = \frac{A}{C}$$
-
-Where we can finally find:
-
-$$BP = B(\frac{N}{M}) = B(\frac{A}{C})$$
-
-And therefore:
-
-```c
-Fixed divide(Fixed x, Fixed y) {
-	return (x / y) * b;
-	// Or if your base is a power of two: (x * y) << n, where B = 2^n.
-}
-```
+Which is representitve of the product of the numbers we are storing, $N \cdot M$, and how they are stored, by being multiplied by $B$, giving us the value $BNM$ used to store the result.
