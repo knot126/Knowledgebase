@@ -52,10 +52,40 @@ $r = \frac{a}{F}$
 $s = \frac{b}{E}$
 $(a_1 + b_1)(a_1 + c_1) = a_1^2 + (a_1 + b_1)c_1 + b_1a_1$
 
-Continue with
+[1] Continue with
 $c^{-1}FE(c^2 - 2(r + s)c - rs)$
 
-this proof might not work actually...
+> this proof might not work actually... or i fucked it too hard X3
+
+$c^{-1}FE(c^2 - 2(r + s)c + (r + s)^2 - (r + s)^2 - rs)$
+$c^{-1}FE((c - (r + s))^2 - (r + s)^2 - rs)$
+$c^{-1}FE((c - (r + s))^2 - (r + s)^2 - rs)$
+
+$$\frac{FE((c - (r + s))^2 - (r + s)^2 - rs)}{c}$$
+
+Remember: For everything to work out this just needs to simplify to $\lfloor ab/c \rfloor$ somehow
+
+$$\frac{FE((c - ((\frac{a}{F}) + (\frac{b}{E})))^2 - ((\frac{a}{F}) + (\frac{b}{E}))^2 - (\frac{a}{F})(\frac{b}{E}))}{c}$$
+
+$$\frac{FE(c - ((\frac{a}{F}) + (\frac{b}{E})))^2 - FE((\frac{a}{F}) + (\frac{b}{E}))^2 - FE(\frac{a}{F})(\frac{b}{E})}{c}$$
+
+$$\frac{FE(c - ((\frac{a}{F}) + (\frac{b}{E})))^2 - FE((\frac{a}{F}) + (\frac{b}{E}))^2 - ab}{c}$$
+
+$$\frac{FE(c - ((\frac{a}{F}) + (\frac{b}{E})))^2 - FE((\frac{a}{F}) + (\frac{b}{E}))^2 - ab}{c}$$
+
+*sigh*
+
+### trying by starting from [1]
+
+$$c^{-1}FE(c^2 - 2(r + s)c - rs)$$
+
+$$\frac{FE(c^2 - 2(r + s)c - rs)}{c}$$
+
+$$\frac{FE(c^2 - 2((\frac{a}{F}) + (\frac{b}{E}))c - (\frac{a}{F})(\frac{b}{E}))}{c}$$
+
+$$\frac{FE(c^2 - 2((\frac{a}{F}) + (\frac{b}{E}))c - (\frac{a}{F})(\frac{b}{E}))}{c}$$
+
+this proof is fucked... 3':
 
 ### checking factoring quickly
 
