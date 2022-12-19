@@ -40,6 +40,32 @@ It seems like we should be able to move things around from here...
 $ba/c - 2bF - 2aE - 2ab/c + cFE$
 $cFE + ba/c - 2bF - 2aE - 2ab/c$
 $cFE - 2bF - 2aE - ab/c$
+$cFE - 2(bF + aE) - ab/c$
+$c^{-1}(c^2FE - 2c(bF + aE) - ab)$
+$c^{-1}(FEc^2 - 2(bF + aE)c - ab)$
+$c^{-1}FE(c^2 - 2(bF + aE)(FE)^{-1}c - ab(FE)^{-1})$
+$c^{-1}FE(c^2 - 2(\frac{bF}{FE} + \frac{aE}{FE})c - ab(FE)^{-1})$
+$c^{-1}FE(c^2 - 2(\frac{a}{F} + \frac{b}{E})c - \frac{ab}{FE})$
+
+Define
+$r = \frac{a}{F}$
+$s = \frac{b}{E}$
+$(a_1 + b_1)(a_1 + c_1) = a_1^2 + (a_1 + b_1)c_1 + b_1a_1$
+
+Continue with
+$c^{-1}FE(c^2 - 2(r + s)c - rs)$
+
+this proof might not work actually...
+
+### checking factoring quickly
+
+$(da + b)(a + c)$
+$da(a + c) + b(a + c)$
+$(daa + dac) + (ba + bc)$
+$(da^2 + dac) + (ba + bc)$
+$da^2 + dac + ba + bc$
+$da^2 + dac + bc + ba$
+$da^2 + c(da + b) + ab$
 
 ## good proof
 
