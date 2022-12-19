@@ -2,7 +2,25 @@
 
 $(A \cdot B) \mod C = (A \mod C) \cdot (B \mod C) \mod C$
 
-## my proof attempt
+## intuition
+
+imagine that you are scaling the number that you are taking the modulous of using the clock face, then look them indivdually.
+
+you might notice some patterns like how when $A = C$ then $(A \cdot B) \mod{C} = 0$ for integers.
+
+essentially it feels like modoulus can be scaled.
+
+## the good proof
+
+Show that $\Phi_0 = \Phi_1$ when
+$\Phi_0 = (A \cdot B) \mod C$
+$\Phi_1 = (A \mod C) \cdot (B \mod C) \mod C$
+
+We can write $A$ and $B$ as
+$A = CP_A + Q_A$
+$B = CP_B + Q_B$
+
+## my proof attempt by using floors (did not work)
 
 Lets use floors...
 
@@ -96,9 +114,3 @@ $(da^2 + dac) + (ba + bc)$
 $da^2 + dac + ba + bc$
 $da^2 + dac + bc + ba$
 $da^2 + c(da + b) + ab$
-
-## good proof
-
-Show that $\Phi_0 = \Phi_1$ when
-$\Phi_0 = (A \cdot B) \mod C$
-$\Phi_1 = (A \mod C) \cdot (B \mod C) \mod C$
