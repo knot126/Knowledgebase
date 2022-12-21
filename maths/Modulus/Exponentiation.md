@@ -23,4 +23,8 @@ Therefore $\Phi_0 = \Phi_1$.
 
 ## Splitting into parts
 
-$x^e \mod c = x^{b+c} \mod c = x^bx^c \mod c$
+$R = x^e \mod a = x^{b+c} \mod a = x^bx^c \mod a$
+$R = (x^b)(x^c) \mod a$
+$\color{red}{R = ((x \mod a)^b \mod a)((x \mod a)^c \mod a) \mod a}$
+$R = (x \mod a)^b(x \mod a)^c \mod a$
+$R = (x \mod a)^{b+c} \mod a$
