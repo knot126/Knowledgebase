@@ -51,4 +51,6 @@ $r = a^{16+8+2} \mod c$
 
 $r = a^{16}a^8a^2 \mod c$
 
-So now we can do any exponent as powers of two :)
+$r = (a^{16} \mod c)(a^8 \mod c)(a^2 \mod c) \mod c$
+
+So now we can do any exponent as powers of two. :)
