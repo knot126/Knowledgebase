@@ -2,15 +2,11 @@
 
 $(A \cdot B) \mod C = (A \mod C) \cdot (B \mod C) \mod C$
 
-## intuition
+## Intuition
 
-imagine that you are scaling the number that you are taking the modulous of using the clock face, then look them indivdually.
+Essentially, mutliplication is scaling the rope or clock hand by some factor, which is also subject to the modulus. For example, multiplying by two 
 
-you might notice some patterns like how when $A = C$ then $(A \cdot B) \mod{C} = 0$ for integers.
-
-essentially it feels like modoulus can be scaled.
-
-## the good proof
+## Proof
 
 Show that $\Phi_0 = \Phi_1$ when
 $\Phi_0 = (A \cdot B) \mod C$
@@ -20,97 +16,48 @@ We can write $A$ and $B$ as
 $A = CP_A + Q_A$
 $B = CP_B + Q_B$
 
-## my proof attempt by using floors (did not work)
+And now, we split this proof into two (or three) parts.
 
-Lets use floors...
+### Part 1: Show that $\Phi_0 = Q_A \cdot Q_B \mod C$
 
-$x \mod y = x - y \lfloor x/y \rfloor$
+$\Phi_0 = (CP_A + Q_A) \cdot (CP_B + Q_B) \mod C$
+$\Phi_0 = (CP_A + Q_A) \cdot (CP_B + Q_B) \mod C$
+$\Phi_0 = (CP_ACP_B + CP_AQ_B + Q_ACP_B + Q_AQ_B) \mod C$
+$\Phi_0 = (CP_ACP_B \mod C + CP_AQ_B \mod C + Q_ACP_B \mod C + Q_AQ_B \mod C) \mod C$
 
-Given
-$ab \mod c = ab - c \lfloor ab/c \rfloor$
-$a \mod c = a - c \lfloor a/c \rfloor$
-$b \mod c = b - c \lfloor b/c \rfloor$
+It is easy to see that $cn \mod c = 0$ since $cn$ is always a multipule of $c$ and therefore has a remainder of zero, which by defition is what modulus gives us. Knowing this, we can write:
 
-Let's try directly
-$(a - c \lfloor  a/c \rfloor)(b - c \lfloor  b/c \rfloor)$
-$a(b - c \lfloor  b/c \rfloor) - c\lfloor a/c \rfloor(b - c \lfloor  b/c \rfloor)$
-$ab - ac \lfloor  b/c \rfloor - c\lfloor a/c \rfloor b + c\lfloor a/c \rfloor c \lfloor  b/c \rfloor$
-$ab - ac \lfloor  b/c \rfloor - cb\lfloor a/c \rfloor + c^2\lfloor a/c \rfloor \lfloor  b/c \rfloor$
-$ab + c^2\lfloor a/c \rfloor \lfloor  b/c \rfloor - ac \lfloor b/c \rfloor - cb\lfloor a/c \rfloor$
-$ab + c(c\lfloor a/c \rfloor \lfloor  b/c \rfloor - a \lfloor b/c \rfloor - b\lfloor a/c \rfloor)$
+$\Phi_0 = (Q_A \cdot Q_B \mod C) \mod C$
 
-It seems like that could work, if we can prove some kind of property of the floor function! Let's keep trying...
+And of course $(n \mod c) \mod c = n \mod c$ so:
 
-It seems like we need to show that
-$-\lfloor ab/c \rfloor = c \lfloor a/c \rfloor \lfloor b/c \rfloor - a \lfloor b/c \rfloor - b \lfloor a/c \rfloor$
+$\Phi_0 = Q_A \cdot Q_B \mod C$
 
-..... okay not tonight but MAYBE soon???
+### Part 2: Show that $\Phi_1 = Q_A \cdot Q_B \mod C$
 
-$c \lfloor a/c \rfloor \lfloor b/c \rfloor - \underbrace{a \lfloor b/c \rfloor}_{\text{excludes fractional part } E} - \underbrace{b \lfloor a/c \rfloor}_{\text{excludes fractional part } F}$
-$c \lfloor a/c \rfloor \lfloor b/c \rfloor - a(b/c - E) - b(a/c - F)$
-$c(b/c - E)(a/c - F) - a(b/c - E) - b(a/c - F)$
-$c(b/c - E)(a/c - F) - ab/c - aE - ba/c - bF$
-$c((b/c)(a/c - F) - E(a/c - F)) - ab/c - aE - ba/c - bF$
-$c(ba/c^2 - bF/c - aE/c + FE) - ab/c - aE - ba/c - bF$
-$ba/c - bF - aE + cFE - ab/c - aE - ba/c - bF$
+$\Phi_1 = (A \mod C) \cdot (B \mod C) \mod C$
+$\Phi_1 = ((CP_A + Q_A) \mod C) \cdot ((CP_B + Q_B) \mod C) \mod C$
+$\Phi_1 = ((CP_A \mod C + Q_A \mod C) \mod C) \cdot ((CP_B \mod C + Q_B \mod C) \mod C) \mod C$
 
-It seems like we should be able to move things around from here...
-$ba/c - 2bF - 2aE - 2ab/c + cFE$
-$cFE + ba/c - 2bF - 2aE - 2ab/c$
-$cFE - 2bF - 2aE - ab/c$
-$cFE - 2(bF + aE) - ab/c$
-$c^{-1}(c^2FE - 2c(bF + aE) - ab)$
-$c^{-1}(FEc^2 - 2(bF + aE)c - ab)$
-$c^{-1}FE(c^2 - 2(bF + aE)(FE)^{-1}c - ab(FE)^{-1})$
-$c^{-1}FE(c^2 - 2(\frac{bF}{FE} + \frac{aE}{FE})c - ab(FE)^{-1})$
-$c^{-1}FE(c^2 - 2(\frac{a}{F} + \frac{b}{E})c - \frac{ab}{FE})$
+It is easy to see that $cn \mod c = 0$ since $cn$ is always a multipule of $c$ and therefore has a remainder of zero, which by defition is what modulus gives us. Knowing this, we can write:
 
-Define
-$r = \frac{a}{F}$
-$s = \frac{b}{E}$
-$(a_1 + b_1)(a_1 + c_1) = a_1^2 + (a_1 + b_1)c_1 + b_1a_1$
+$\Phi_1 = ((Q_A \mod C) \mod C) \cdot ((Q_B \mod C) \mod C) \mod C$
 
-[1] Continue with
-$c^{-1}FE(c^2 - 2(r + s)c - rs)$
+And of course $(n \mod c) \mod c = n \mod c$ so:
 
-> this proof might not work actually... or i fucked it too hard X3
+$\Phi_1 = (Q_A \mod C) \cdot (Q_B \mod C) \mod C$
 
-$c^{-1}FE(c^2 - 2(r + s)c + (r + s)^2 - (r + s)^2 - rs)$
-$c^{-1}FE((c - (r + s))^2 - (r + s)^2 - rs)$
-$c^{-1}FE((c - (r + s))^2 - (r + s)^2 - rs)$
+And since $Q_A$ and $Q_B$ are already $\mod C$ becuase they are remainders, we can write:
 
-$$\frac{FE((c - (r + s))^2 - (r + s)^2 - rs)}{c}$$
+$\Phi_1 = Q_A \cdot Q_B \mod C$
 
-Remember: For everything to work out this just needs to simplify to $\lfloor ab/c \rfloor$ somehow
+### Part 3
 
-$$\frac{FE((c - ((\frac{a}{F}) + (\frac{b}{E})))^2 - ((\frac{a}{F}) + (\frac{b}{E}))^2 - (\frac{a}{F})(\frac{b}{E}))}{c}$$
+Now, let's look at our final results:
 
-$$\frac{FE(c - ((\frac{a}{F}) + (\frac{b}{E})))^2 - FE((\frac{a}{F}) + (\frac{b}{E}))^2 - FE(\frac{a}{F})(\frac{b}{E})}{c}$$
+* $\Phi_0 = Q_A \cdot Q_B \mod C$
+* $\Phi_1 = Q_A \cdot Q_B \mod C$
 
-$$\frac{FE(c - ((\frac{a}{F}) + (\frac{b}{E})))^2 - FE((\frac{a}{F}) + (\frac{b}{E}))^2 - ab}{c}$$
+So, we can say that $\Phi_0 = \Phi_1$!
 
-$$\frac{FE(c - ((\frac{a}{F}) + (\frac{b}{E})))^2 - FE((\frac{a}{F}) + (\frac{b}{E}))^2 - ab}{c}$$
-
-*sigh*
-
-### trying by starting from [1]
-
-$$c^{-1}FE(c^2 - 2(r + s)c - rs)$$
-
-$$\frac{FE(c^2 - 2(r + s)c - rs)}{c}$$
-
-$$\frac{FE(c^2 - 2((\frac{a}{F}) + (\frac{b}{E}))c - (\frac{a}{F})(\frac{b}{E}))}{c}$$
-
-$$\frac{FE(c^2 - 2((\frac{a}{F}) + (\frac{b}{E}))c - (\frac{a}{F})(\frac{b}{E}))}{c}$$
-
-this proof is fucked... 3':
-
-### checking factoring quickly
-
-$(da + b)(a + c)$
-$da(a + c) + b(a + c)$
-$(daa + dac) + (ba + bc)$
-$(da^2 + dac) + (ba + bc)$
-$da^2 + dac + ba + bc$
-$da^2 + dac + bc + ba$
-$da^2 + c(da + b) + ab$
+And that is it, we have proven this property of modulus.
