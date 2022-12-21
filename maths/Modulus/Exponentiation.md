@@ -25,6 +25,6 @@ Therefore $\Phi_0 = \Phi_1$.
 
 $R = x^e \mod a = x^{b+c} \mod a = x^bx^c \mod a$
 $R = (x^b)(x^c) \mod a$
-$\color{red}{R = ((x \mod a)^b \mod a)((x \mod a)^c \mod a) \mod a}$
-$R = (x \mod a)^b(x \mod a)^c \mod a$
-$R = (x \mod a)^{b+c} \mod a$
+$R = ((x \mod a)^b \mod a)((x \mod a)^c \mod a) \mod a$
+$\color{grey}R = (x \mod a)^b(x \mod a)^c \mod a$
+$\color{grey}R = (x \mod a)^{b+c} \mod a$
