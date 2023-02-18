@@ -3,3 +3,4 @@
 Some language and compiler ideas. Probably a lot of these already exist but are not popular.
 
 * Language where you can compile some functions and have others be JIT compilled, useful for testing parts of apps quickly. Probably already exists.
+* A language which uses no English words, only symbols and other operator-like tokens.
